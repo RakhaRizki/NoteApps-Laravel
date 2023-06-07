@@ -12,7 +12,7 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function wow (){
-        return view('');
+        return view('sdfuasfa');
     }
 
 }
