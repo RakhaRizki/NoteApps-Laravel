@@ -10,7 +10,7 @@
 
         {{--* bootstrap js --}}
         <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js')}}">
-        {{--* end bootsrap js --}} 
+        // {{--* end bootstrap js --}} 
         </script>
 
         {{--* font awesome --}}

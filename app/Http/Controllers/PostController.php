@@ -15,7 +15,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('');
+        $post = post::get();
+        $data = [
+            'post' => $post
+        ];
+        return view('posts.index', $data);
     }
 
     /**
@@ -25,7 +29,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('');
+        return view('posts.index');
     }
 
     /**
