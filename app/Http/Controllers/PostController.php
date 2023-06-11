@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\postRequest;
 use App\Models\post;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return view('');
     }
 
     /**
@@ -24,7 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('');
     }
 
     /**
@@ -33,9 +34,12 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(post $post)
     {
-        //
+        $data = $post -> all();
+        post::create($data);
+
+        return redirect()->route('');
     }
 
     /**
@@ -55,9 +59,11 @@ class PostController extends Controller
      * @param  \App\Models\post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(post $post)
+    public function edit(post $post,postRequest $request)
     {
-        //
+        
+        return view('');
+        
     }
 
     /**
@@ -69,7 +75,8 @@ class PostController extends Controller
      */
     public function update(Request $request, post $post)
     {
-        //
+        $post -> update($request->all());
+        return redirect()->route('');
     }
 
     /**
@@ -80,6 +87,7 @@ class PostController extends Controller
      */
     public function destroy(post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('');
     }
 }
