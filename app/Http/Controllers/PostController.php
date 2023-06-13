@@ -29,7 +29,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.index');
+        return view('posts.create');
     }
 
     /**
@@ -38,12 +38,20 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(post $post)
+    public function store(Request $request)
     {
-        $data = $post -> all();
-        post::create($data);
+        $title = $request->input('title');
+        $deskripsi = $request->input('deskripsi');
 
-        return redirect()->route('');
+        post::create([
+            'title' => $title,
+            'deskripsi' => $deskripsi
+        ]);
+
+
+
+
+        return redirect('note');
     }
 
     /**
@@ -63,11 +71,11 @@ class PostController extends Controller
      * @param  \App\Models\post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(post $post,postRequest $request)
+    public function edit(string $id)
     {
-        
-        return view('');
-        
+        $post = post::find($id);
+
+        return view('posts.edit')->with('post',$post);
     }
 
     /**
@@ -79,8 +87,8 @@ class PostController extends Controller
      */
     public function update(Request $request, post $post)
     {
-        $post -> update($request->all());
-        return redirect()->route('');
+        $post->update($request->all());
+        return redirect('posts.index');
     }
 
     /**
@@ -92,6 +100,6 @@ class PostController extends Controller
     public function destroy(post $post)
     {
         $post->delete();
-        return redirect()->route('');
+        return redirect('posts.index');
     }
 }

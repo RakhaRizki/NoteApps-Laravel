@@ -18,4 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('note',PostController::class);
+Route::resource('/note',PostController::class);

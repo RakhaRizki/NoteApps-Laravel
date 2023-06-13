@@ -4,49 +4,49 @@
 
 <!-- TOMBOL TAMBAH DATA -->
 
-                <div class="pb-3">
-                  <a href='{{ url("/create") }}' class="btn btn-primary">+ Tambah Data</a>
-                </div>
-          
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th class="col-md-1">No</th>
-                            <th class="col-md-3">Judul</th>
-                            <th class="col-md-5">Deskripsi</th>
-                            <th class="col-md-2">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        
-                        @php($number = 1)
-                        @foreach ($post as $d)
-                        <tr>
+<div class="pb-3">
+    <a href='{{ url("note/create") }}' class="btn btn-primary">+ Tambah Data</a>
+</div>
 
-                            <td> {{ $number }} </td>
-                            <td> {{ $d->title }} </td>
-                            <td> {{ $d->deskripsi }} </td>
-                            <td>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th class="col-md-1">No</th>
+            <th class="col-md-3">Judul</th>
+            <th class="col-md-5">Deskripsi</th>
+            <th class="col-md-2">Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
 
-                            <!-- Button Hapus dan Button Edit -->
-                             <form method="POST" action="{{ url("/$d->id") }}">
-                                 @method('DELETE')
-                                 @csrf
-                             <button type="submit" class="btn btn-outline-danger my-2 "><i class="fa-solid fa-trash"></i></button>
-                              <a  href="{{url("/$d->id/edit")}}" class="btn btn-outline-primary"><i class="fa-regular fa-pen-to-square"></i></a>
-                            </form>
+        @php($number = 1)
+        @foreach ($post->reverse() as $d)
+        <tr>
 
-                            </td>
-                        @php($number++)
-                        @endforeach
-                        
+            <td> {{ $number }} </td>
+            <td> {{ $d->title }} </td>
+            <td> {{ $d->deskripsi }} </td>
+            <td>
 
-                        </tr>
-                    </tbody>
-                </table>
-               
-          </div>
-          <!-- AKHIR DATA -->
-    </main>
+                <!-- Button Hapus dan Button Edit -->
+                <form method="POST" action="{{ url("/$d->id/delete") }}">
+                    @method('DELETE')
+                    @csrf
+                    <button type="submit" class="btn btn-outline-danger my-2 "><i class="fa-solid fa-trash"></i></button>
+                    <a href="{{ url ('/note/' . $d->id . '/edit')}}" class="btn btn-outline-primary"><i class="fa-regular fa-pen-to-square"></i></a>
+                </form>
+
+            </td>
+            @php($number++)
+            @endforeach
+
+
+        </tr>
+    </tbody>
+</table>
+
+</div>
+<!-- AKHIR DATA -->
+</main>
 
 @endsection
