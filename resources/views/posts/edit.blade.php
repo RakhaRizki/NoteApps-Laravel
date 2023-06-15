@@ -16,10 +16,10 @@
             </div>
         </div>
 
-        <div class="mb-3 row">
+        <div class="mb-5 row">
             <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" value="{{$post->deskripsi}}" name='deskripsi' id="deskripsi" required>
+                <textarea class="form-control pb-5" name='deskripsi' id="deskripsi" required>{{$post->deskripsi}}</textarea>
             </div>
         </div>
 

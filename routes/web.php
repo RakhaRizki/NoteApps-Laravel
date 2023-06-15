@@ -36,5 +36,7 @@ Route::delete('/note/{id}', [PostController::class, 'destroy']);
 Route::get('/note/{id}/edit', [PostController::class, 'edit']);
 // memperbarui data yang sudah ada pada server //
 Route::patch('/note/{id}', [PostController::class, 'update']);
+//selengkapnya
+Route::get('/note/{id}/show',[PostController::class,'show']);
 
 

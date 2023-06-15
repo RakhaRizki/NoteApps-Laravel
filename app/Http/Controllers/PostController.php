@@ -60,9 +60,21 @@ class PostController extends Controller
      * @param  \App\Models\post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(post $post)
+    public function show($id)
     {
-        //
+        // "SELECT * FROM posts WHERE id = $id"
+        $selengkapnya = Post::where('id',$id)->first();
+        // $comments = $selected_post->comments()->limit(2)->get();
+        // $total_comments = $comments->count();
+
+
+        $data = [
+            'post' => $selengkapnya,
+
+        ];
+
+
+        return view('posts.show', $data);
     }
 
     /**

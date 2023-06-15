@@ -4,41 +4,55 @@
 
 <!-- TOMBOL TAMBAH DATA -->
 
-<div class="pb-3">
-    <a href='{{ url("note/create") }}' class="btn btn-primary">+ Tambah Data</a>
+
+<form method="POST" action="{{ url('/note') }}">
+    @csrf
+
+
+
+    <div class=" border border-dark-300 shadow p-3 mb-5 bg-body-tertiary rounded">
+        <div class="mb-3 row">
+            <label for="judul" class="col-sm-2 col-form-label">Judul</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name='judul' id="judul" required>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name='deskripsi' id="deskripsi" required>
+            </div>
+        </div>
+
+        <!-- Button -->
+        <button type="submit" class="btn btn-outline-primary">simpan</button>
+
+
+</form>
 </div>
 
 <table class="table table-striped">
-    <thead>
-        <tr>
-            <th class="col-md-1">No</th>
-            <th class="col-md-3">Judul</th>
-            <th class="col-md-5">Deskripsi</th>
-            <th class="col-md-2">Aksi</th>
-        </tr>
-    </thead>
+
     <tbody>
-
         @php($number = 1)
-        @foreach ($post as $d)
-        <tr>
+        @foreach ($post->reverse() as $d)
 
-            <td> {{ $number }} </td>
-            <td> {{ $d->judul }} </td>
-            <td> {{ $d->deskripsi }} </td>
-            <td>
 
-                <!-- Button Hapus dan Button Edit -->
-                <form method="POST" action="{{ url("note/$d->id") }}">
-                    @method('DELETE')
-                    @csrf
-                    <button type="submit" class="btn btn-outline-danger my-2 "><i class="fa-solid fa-trash"></i></button>
-                    <a href="{{ url("note/$d->id/edit")}}" class="btn btn-outline-primary"><i class="fa-regular fa-pen-to-square"></i></a>
-                </form>
+        <div class="card my-4 ">
+            <div class="card-body">
+                <h5 class="card-title">{{ $d->judul }}</h5>
+                <p class="card-text">{{ Illuminate\Support\Str::limit($d->deskripsi, 50) }}</p>
 
-            </td>
-            @php($number++)
-            @endforeach
+                <a href="{{ url("note/$d->id/show") }}" class="btn btn-primary">Selengkapnya</a>
+
+            </div>
+        </div>
+        @php($number++)
+        @endforeach
+
+
+
 
 
         </tr>
