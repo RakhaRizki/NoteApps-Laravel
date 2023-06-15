@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\postRequest;
 use App\Models\post;
 use Illuminate\Http\Request;
 
@@ -16,9 +15,11 @@ class PostController extends Controller
     public function index()
     {
         $post = post::get();
+
         $data = [
             'post' => $post
         ];
+        
         return view('posts.index', $data);
     }
 
@@ -40,15 +41,17 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $title = $request->input('title');
+
+        $judul = $request->input('judul');
         $deskripsi = $request->input('deskripsi');
 
         post::create([
-            'title' => $title,
+            'judul' => $judul,
             'deskripsi' => $deskripsi
         ]);
 
         return redirect('note');
+
     }
 
     /**
@@ -93,13 +96,13 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         
-        // mengambil nilai dari input 'title' dan 'deskripsi' yang dikirimkan oleh user melalui form //
-        $title = $request->input('title');
+        $judul = $request->input('judul');
         $deskripsi = $request->input('deskripsi');
 
         // meng-update data pada tabel post pada database. //
+
         post::where('id', $id)->update([
-            'title' => $title,
+            'judul' => $judul,
             'deskripsi' => $deskripsi
         ]);
 

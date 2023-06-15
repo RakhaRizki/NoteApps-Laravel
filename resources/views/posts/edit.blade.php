@@ -10,9 +10,9 @@
 
     <div class="my-3 p-3 bg-body rounded shadow-sm">
         <div class="mb-3 row">
-            <label for="nama" class="col-sm-2 col-form-label">Judul</label>
+            <label for="judul" class="col-sm-2 col-form-label">Judul</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name='judul' value="{{$post->title}}" id=" judul" required>
+                <input type="text" class="form-control" name='judul' value="{{$post->judul}}" id=" judul" required>
             </div>
         </div>
 

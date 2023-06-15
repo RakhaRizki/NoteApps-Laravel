@@ -20,11 +20,11 @@
     <tbody>
 
         @php($number = 1)
-        @foreach ($post->reverse() as $d)
+        @foreach ($post as $d)
         <tr>
 
             <td> {{ $number }} </td>
-            <td> {{ $d->title }} </td>
+            <td> {{ $d->judul }} </td>
             <td> {{ $d->deskripsi }} </td>
             <td>
 
