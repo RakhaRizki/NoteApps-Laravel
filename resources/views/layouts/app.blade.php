@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title> NoteApps | @yield('title') </title>
+    <title> NoteApps | IDNBS </title>
 
         {{--* bootstrap css --}}
         <link href="{{ asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -29,7 +29,7 @@
         @yield('content')
 
       @include('layouts.app.footer')
-    
+
     </div>
 
 </body>

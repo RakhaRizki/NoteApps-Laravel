@@ -48,9 +48,6 @@ class PostController extends Controller
             'deskripsi' => $deskripsi
         ]);
 
-
-
-
         return redirect('note');
     }
 
@@ -71,11 +68,19 @@ class PostController extends Controller
      * @param  \App\Models\post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        $post = post::find($id);
+       
+        // mengambil data siswa dari tabel siswa pada database berdasarkan id tertentu. //
+        $data_post = post::where('id', $id)->first();
 
-        return view('posts.edit')->with('post',$post);
+        // menyiapkan data yang akan dikirimkan ke view untuk ditampilkan. //
+        $data  = [
+          'post' => $data_post
+        ];
+
+        return view('posts.edit', $data);
+
     }
 
     /**
@@ -85,10 +90,21 @@ class PostController extends Controller
      * @param  \App\Models\post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, post $post)
+    public function update(Request $request, $id)
     {
-        $post->update($request->all());
-        return redirect('posts.index');
+        
+        // mengambil nilai dari input 'title' dan 'deskripsi' yang dikirimkan oleh user melalui form //
+        $title = $request->input('title');
+        $deskripsi = $request->input('deskripsi');
+
+        // meng-update data pada tabel post pada database. //
+        post::where('id', $id)->update([
+            'title' => $title,
+            'deskripsi' => $deskripsi
+        ]);
+
+        return redirect("/note");
+
     }
 
     /**
@@ -97,9 +113,10 @@ class PostController extends Controller
      * @param  \App\Models\post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(post $post)
+    public function destroy($id)
     {
-        $post->delete();
-        return redirect('posts.index');
+        post::find($id)->delete();
+
+        return redirect('/note');
     }
 }

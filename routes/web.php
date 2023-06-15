@@ -18,4 +18,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/note',PostController::class);
+// menampilkan halaman utama //
+Route::get('/note', [PostController::class, 'index']);
+
+// Create //
+// menampilkan halaman form untuk membuat data baru //
+Route::get('/note/create', [PostController::class, 'create']);
+// menangani proses penyimpanan data baru dari form . Ketika user men-submit form untuk menambahkan data baru //
+Route::post('/note', [PostController::class, 'store']);
+
+// Delete //
+//  menghapus data tertentu dengan menggunakan ID sebagai parameter //
+Route::delete('/note/{id}', [PostController::class, 'destroy']);
+
+// Edit //
+// Untuk Mengedit data tertentu //
+Route::get('/note/{id}/edit', [PostController::class, 'edit']);
+// memperbarui data yang sudah ada pada server //
+Route::patch('/note/{id}', [PostController::class, 'update']);
+
+

@@ -2,11 +2,11 @@
 @section('home')
 @section('content')
 
-<form method="POST" action="{{ url('') }}">
+<form method="POST" action="{{ url("/note/$post->id") }}">
+    @method('PATCH')
     @csrf
-    @method('PUT')
 
-    <h1 class="text-center"> Tambah Data </h1>
+    <h1 class="text-center"> Edit Data </h1>
 
     <div class="my-3 p-3 bg-body rounded shadow-sm">
         <div class="mb-3 row">
@@ -29,6 +29,5 @@
 
 </form>
 </div>
-@stop
 
 @endsection

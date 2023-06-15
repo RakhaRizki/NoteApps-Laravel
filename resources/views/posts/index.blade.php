@@ -29,11 +29,11 @@
             <td>
 
                 <!-- Button Hapus dan Button Edit -->
-                <form method="POST" action="{{ url("/$d->id/delete") }}">
+                <form method="POST" action="{{ url("note/$d->id") }}">
                     @method('DELETE')
                     @csrf
                     <button type="submit" class="btn btn-outline-danger my-2 "><i class="fa-solid fa-trash"></i></button>
-                    <a href="{{ url ('/note/' . $d->id . '/edit')}}" class="btn btn-outline-primary"><i class="fa-regular fa-pen-to-square"></i></a>
+                    <a href="{{ url("note/$d->id/edit")}}" class="btn btn-outline-primary"><i class="fa-regular fa-pen-to-square"></i></a>
                 </form>
 
             </td>

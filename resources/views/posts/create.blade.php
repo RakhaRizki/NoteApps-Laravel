@@ -2,7 +2,7 @@
 @section('home')
 @section('content')
 
-<form method="POST" action="{{ url('note') }}">
+<form method="POST" action="{{ url('/note') }}">
     @csrf
 
     <h1 class="text-center"> Tambah Data </h1>
@@ -24,7 +24,7 @@
 
         <!-- Button -->
         <button type="submit" class="btn btn-outline-primary">simpan</button>
-        <a href="{{url('note/')}}" class="btn btn-outline-danger">kembali</a>
+        <a href="{{url('/note')}}" class="btn btn-outline-danger">kembali</a>
 
 </form>
 </div>
