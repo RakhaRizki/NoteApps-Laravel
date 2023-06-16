@@ -41,6 +41,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        //untuk mengirim request input data ke table yang ada di database
 
         $judul = $request->input('judul');
         $deskripsi = $request->input('deskripsi');
@@ -64,10 +65,7 @@ class PostController extends Controller
     {
         // "SELECT * FROM posts WHERE id = $id"
         $selengkapnya = Post::where('id',$id)->first();
-        // $comments = $selected_post->comments()->limit(2)->get();
-        // $total_comments = $comments->count();
-
-
+//
         $data = [
             'post' => $selengkapnya,
 

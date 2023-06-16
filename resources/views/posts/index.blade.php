@@ -1,5 +1,4 @@
 @extends('layouts.app')
-@section('home')
 @section('content')
 
 <!-- TOMBOL TAMBAH DATA -->
@@ -10,7 +9,7 @@
 
 
 
-    <div class=" border border-dark-300 shadow p-3 mb-5 bg-body-tertiary rounded">
+    <div class=" border border-dark-300 shadow p-3 mb-5 bg-body-white rounded">
         <div class="mb-3 row">
             <label for="judul" class="col-sm-2 col-form-label">Judul</label>
             <div class="col-sm-10">
@@ -21,7 +20,7 @@
         <div class="mb-3 row">
             <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name='deskripsi' id="deskripsi" required>
+                <textarea type="text" class="form-control" name='deskripsi' id="deskripsi" required></textarea>
             </div>
         </div>
 

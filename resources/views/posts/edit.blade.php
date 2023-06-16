@@ -1,5 +1,4 @@
 @extends('layouts.app')
-@section('home')
 @section('content')
 
 <form method="POST" action="{{ url("/note/$post->id") }}">
@@ -8,7 +7,7 @@
 
     <h1 class="text-center"> Edit Data </h1>
 
-    <div class="my-3 p-3 bg-body rounded shadow-sm">
+    <div class="shadow p-3 mb-5 bg-body-white rounded">
         <div class="mb-3 row">
             <label for="judul" class="col-sm-2 col-form-label">Judul</label>
             <div class="col-sm-10">
